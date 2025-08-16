@@ -9,14 +9,12 @@ public class MyBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        // ✅ Username from Render env var
-        return System.getenv("BOT_USERNAME");
+        return System.getenv("BOT_USERNAME"); // read from Render env var
     }
 
     @Override
     public String getBotToken() {
-        // ✅ Token from Render env var
-        return System.getenv("BOT_TOKEN");
+        return System.getenv("BOT_TOKEN"); // read from Render env var
     }
 
     @Override
@@ -25,14 +23,12 @@ public class MyBot extends TelegramLongPollingBot {
             String chatId = update.getMessage().getChatId().toString();
             String text = update.getMessage().getText();
 
-            String reply = "You said: " + text;
-
             SendMessage message = new SendMessage();
             message.setChatId(chatId);
-            message.setText(reply);
+            message.setText("You said: " + text);
 
             try {
-                execute(message); // send the reply
+                execute(message);
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
