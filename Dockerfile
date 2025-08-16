@@ -3,8 +3,8 @@ WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Fake port binding so Render web service is happy
+# Fake port so Render is happy
 ENV PORT 10000
 EXPOSE $PORT
 
-CMD ["java", "-cp", "target/classes:target/dependency/*", "com.example.telegrambot.Main"]
+CMD ["java", "-jar", "target/telegrambot-fat.jar"]
