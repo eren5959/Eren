@@ -9,7 +9,8 @@ public class Main {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
             botsApi.registerBot(new MyBot());
             System.out.println("Bot started successfully!");
-            // Keep the program alive
+
+            // Keep alive
             while (true) {
                 Thread.sleep(10000);
             }
